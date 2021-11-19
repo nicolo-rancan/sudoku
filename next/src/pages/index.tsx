@@ -77,7 +77,7 @@ class ARP extends React.Component {
     for (let i = 0; i < this.values.length && flag != 0; i++)
       if (this.values[i] == 0) flag = 0;
 
-    let repeated = flag == 0 ? true : false;
+    let repeated = false;
 
     let board = [];
     let rows = [];
@@ -142,6 +142,7 @@ class ARP extends React.Component {
 
   cellChanged(value, index) {
     this.values[index] = value;
+    this.checkCells();
   }
 
   render() {
@@ -167,6 +168,17 @@ class ARP extends React.Component {
               fontFamily: "sans-serif",
             }}
           >
+            <img
+              src="mask.png"
+              style={{
+                position: "absolute",
+                width: "450px",
+                height: "450px",
+                marginTop: "-4px",
+                marginLeft: "-4px",
+                zIndex: -1,
+              }}
+            />
             {this.elements.map((el) => el)}
           </div>
           <div style={{ paddingTop: "50px" }}>
